@@ -1,7 +1,7 @@
 from speedCommons import pretty
 def bottomUp(sec,M):
     for i in range(len(sec)):
-        for j in range(len(sec)):
+        for j in range(i,len(sec)):
             max_product = 1
             for k in range(i,j+1):
                 if sec[k]!=0:
@@ -11,7 +11,8 @@ def bottomUp(sec,M):
             M[i][j] = int(max_product)
     return M
 def subSequence(X, memo):
-        max_val = memo[0][len(X)-1]
+        import numpy
+        max_val = numpy.max(memo)
         i, j = 0, len(X)-1
         for x in range(len(X)):
             for y in range(x, len(X)):
