@@ -13,7 +13,6 @@ def bottomUp(sec,M):
 def subSequence(X, memo):
         import numpy
         max_val = numpy.max(memo)
-        print(max_val)
         i, j = 0, len(X)-1
         for x in range(len(X)):
             for y in range(x, len(X)):
