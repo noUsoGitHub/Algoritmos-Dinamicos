@@ -47,4 +47,5 @@ def testingDeResultados():
 
 
 
+print(Memory([-10,3]))
 
