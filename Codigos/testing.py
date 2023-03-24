@@ -3,6 +3,13 @@ from MemorizadoRecursivo import rec as Memory
 from Recursivo import rec as Recursive
 from Iterativo import rec as Iterative
 from Tabulado import rec as BottomUp
+import pandas as pd
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+import numpy as np
+import unittest
+
 def testFunction(seq=[-7,12,-7,0,14,-7,5]):
     import time as t
     time =[]
@@ -44,8 +51,26 @@ def testingDeResultados():
     for i in range(len(sequences)):
         print(i)
         testFunction(sequences[i])
+def results():
+    df = pd.read_csv('output.res', sep=' ', header=None, names=['n','recursivo','Memory', 'bottom_up'])
+    print(df)
+    df.plot(y=['recursivo','Memory','bottom_up'], x='n')
+    plt.show()
+    mod = smf.ols(formula='recursivo ~ np.power(2,n)', data=df)
+    rest = mod.fit()
+    print(rest.summary())
+    sm.graphics.plot_fit(rest, "np.power(2, n)")
+    plt.show()
+    mod = smf.ols(formula='Memory ~ np.power(n,3)', data=df)
+    rest = mod.fit()
+    print(rest.summary())
+    sm.graphics.plot_fit(rest, "np.power(n, 3)")
+    plt.show()
+    mod = smf.ols(formula='bottom_up ~ np.power(n,3)', data=df)
+    rest = mod.fit()
+    print(rest.summary())
+    sm.graphics.plot_fit(rest, "np.power(n, 3)")
+    plt.show()
+results()
 
-
-
-print(Memory([-10,3]))
 
