@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 import numpy as np
-import unittest
 
 def testFunction(seq=[-7,12,-7,0,14,-7,5]):
     import time as t
@@ -37,7 +36,7 @@ def testFunction(seq=[-7,12,-7,0,14,-7,5]):
     with open("output.res", "a") as fileW:
         fileW.write(f"{len(seq)} {time[0]:.15f} {time[1]:.15f} {time[2]:.15f}\n")
     return 
-def testingDeResultados():
+def GenerarResultados():
     import random
     import json
     sequences = []
@@ -61,10 +60,10 @@ def results():
     print(rest.summary())
     sm.graphics.plot_fit(rest, "np.power(2, n)")
     plt.show()
-    mod = smf.ols(formula='Memory ~ np.power(n,3)', data=df)
+    mod = smf.ols(formula='Memory ~ np.log(n)', data=df)
     rest = mod.fit()
     print(rest.summary())
-    sm.graphics.plot_fit(rest, "np.power(n, 3)")
+    sm.graphics.plot_fit(rest, "np.log(n)")
     plt.show()
     mod = smf.ols(formula='bottom_up ~ np.power(n,3)', data=df)
     rest = mod.fit()
