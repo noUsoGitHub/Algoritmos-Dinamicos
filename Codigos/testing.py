@@ -44,7 +44,7 @@ def testingDeResultados():
     for i in range(len(sequences)):
         print(i)
         testFunction(sequences[i])
-testingDeResultados()    
+
 
 
 
