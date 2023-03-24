@@ -12,7 +12,7 @@ def MemorizadoRecursivo(sec,i,j,M):
                 max_product *= sec[k] # Multiplicamos
             else:
                 break # Si es 0 se retorna o rompe el ciclo actual de la secuencia pues despues de 0 todo dara 0 por lo cual este es el mayor
-        M[i][j] = max(max_product,MemorizadoRecursivo(sec,i,j-1,M),MemorizadoRecursivo(sec,i+1,j,M)) # Se llena la Matriz con los valores maximos
+        M[i][j] =  max(max_product,MemorizadoRecursivo(sec,i,j-1,M),MemorizadoRecursivo(sec,i+1,j,M)) # Se llena la Matriz con los valores maximos
         return M[i][j] # Se retorna el valor i,j
 
 def MemorizadoRecursivo2(sec,i,j,M):
